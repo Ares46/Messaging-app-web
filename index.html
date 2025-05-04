@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <!-- Notification elements - moved to top of body -->
+    <div id="notification-container"></div>
+    <audio id="notification-sound" preload="auto">
+        <source src="assets/notification.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen">
+            <div class="login-container">
+                <h1>Welcome to Chat App</h1>
+                
+                <!-- Login Form -->
+                <div id="login-form" class="form-container">
+                    <h2>Login</h2>
+                    <div class="form-group">
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button id="login-btn">Login</button>
+                    <p class="form-switch">Don't have an account? <a href="#" id="show-register">Register</a></p>
+                    <p class="forgot-password"><a href="#" id="show-reset-password">Forgot Password?</a></p>
+                </div>
+
+                <!-- Reset Password Form -->
+                <div id="reset-password-form" class="form-container hidden">
+                    <h2>Reset Password</h2>
+                    <div class="form-group">
+                        <input type="email" id="reset-email" placeholder="Enter your email" required>
+                    </div>
+                    <button id="reset-password-btn">Send Reset Link</button>
+                    <p class="form-switch">Remember your password? <a href="#" id="show-login-from-reset">Login</a></p>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="register-form" class="form-container hidden">
+                    <h2>Register</h2>
+                    <div class="form-group">
+                        <input type="text" id="register-username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="register-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register-password" placeholder="Choose a password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register-confirm-password" placeholder="Confirm password" required>
+                    </div>
+                    <button id="register-btn">Register</button>
+                    <p class="form-switch">Already have an account? <a href="#" id="show-login">Login</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen hidden">
+            <div class="chat-container">
+                <!-- Sidebar with users -->
+                <div class="sidebar">
+                    <div class="current-user">
+                        <div class="avatar" id="current-user-avatar"></div>
+                        <span id="current-user-name"></span>
+                    </div>
+                    <div class="users-container">
+                        <h3>Online Users</h3>
+                        <ul id="users-list"></ul>
+                    </div>
+                </div>
+
+                <!-- Main chat area -->
+                <div class="chat-area">
+                    <!-- User List View -->
+                    <div id="user-list-view" class="chat-view">
+                        <div class="chat-header">
+                            <h2>Select a User to Chat</h2>
+                        </div>
+                        <div class="welcome-message">
+                            <p>Click on a user's name from the sidebar to start a private conversation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Private Chat View -->
+                    <div id="private-chat-view" class="chat-view hidden">
+                        <div class="chat-header">
+                            <button id="back-to-users" class="back-btn">&larr; Back</button>
+                            <h2 id="private-chat-title">Chat with User</h2>
+                        </div>
+                        <div class="messages-container" id="private-messages-container"></div>
+                        <div class="message-input-container">
+                            <input type="text" id="message-input" placeholder="Type a message...">
+                            <button id="send-btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
