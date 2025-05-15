@@ -641,3 +641,27 @@ button:hover {
     font-weight: bold;
     color: #4a90e2;
 } 
+
+
+#make-group-btn {
+    width: 100px;
+   height: 40px;
+   position: fixed;
+   top: 15px;
+   right: 50px;
+   background-color: #4a90e2;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   /* Add these properties to center the text */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+#make-group-btn:hover {
+   background-color: #3a7bc8;
+}
